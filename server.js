@@ -5,12 +5,14 @@ app.use(express.json())
 //Converts the incoming JSON data into the JS Objet
 
 
-
-
+const connectDB = require("./backend/db.js")
+connectDB();
 
 // importing the Routing 
 
-const userRoutes = require("./routes/routing.js")
+const userRoutes = require("./routes/routing.js");
+const { connection } = require("mongoose");
+// const connectDB = require("./backend/db.js");
 
 // using the routing
 app.use("/users",userRoutes);

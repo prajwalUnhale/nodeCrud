@@ -1,7 +1,16 @@
-const mongoose= rquire("mongoose")
-const connection = async()=>{
+const mongoose= require("mongoose")
+const connectDB = async()=>{
     try{
-        await mongoose.connect(process.env.MongoURL)
+        mongoose.connect(
+  process.env.MongoURL
+)
+.then(() => {
+    console.log("MongoDB Connected");
+})
+.catch((error) => {
+    console.log("FULL ERROR:");
+    console.log(error);
+});
         console.log("MongoDb Atlas is connected");
         
     }
@@ -10,4 +19,4 @@ const connection = async()=>{
         process.exit(1)
     }
 }
-module.exports = connection
+module.exports = connectDB

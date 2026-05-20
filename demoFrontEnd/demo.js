@@ -12,6 +12,7 @@ const users = [
 // CREATE USER
 const createUser = async (user) => {
   try {
+
     const res = await fetch(BASE_URL, {
       method: "POST",
       headers: {
@@ -22,11 +23,19 @@ const createUser = async (user) => {
 
     const data = await res.json();
 
+    if(!res.ok){
+      throw new Error(data.message || "Create Failed");
+    }
+
     console.log("Created User:", data);
 
     return data;
+
   } catch (error) {
+
     console.error("Create Error:", error.message);
+
+    return null;
   }
 };
 

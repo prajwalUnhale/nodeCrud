@@ -67,17 +67,24 @@ const getUserById = async(req,res)=>{
 // This is the create user with the MongoDB atlas
 const createUser = async (req,res)=>{
     try{
-        const user = await User.create(req.body);
-        res.status(201).json(user);
-    }
-    catch(error){
-        console.log(error.message);
-        res.status(500)
-.json({
-    message:error.message
-})    }
-}
 
+        console.log("BODY:", req.body);
+
+        const user = await User.create(req.body);
+
+        console.log("CREATED:", user);
+
+        res.status(201).json(user);
+
+    }catch(error){
+
+        console.log("CREATE ERROR:", error);
+
+        res.status(500).json({
+            message:error.message
+        });
+    }
+}
 //update the user
 
 // const updateUser = (req, res)=>{
