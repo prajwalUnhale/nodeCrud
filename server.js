@@ -1,9 +1,14 @@
+require("dotenv").config();
 const express = require("express")
 const app = express();
 app.use(express.json())
 //Converts the incoming JSON data into the JS Objet
 
-// importingthe Routing 
+
+
+
+
+// importing the Routing 
 
 const userRoutes = require("./routes/routing.js")
 
